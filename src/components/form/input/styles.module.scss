@@ -1,0 +1,99 @@
+.inputWrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  background: transparent;
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+.label {
+  font-size: 12px;
+  font-weight: 600;
+  background: transparent;
+  padding: 0;
+  color: var(--text-600);
+  margin-bottom: 10px;
+  font-family: "Lato", sans-serif;
+}
+.message {
+  font-size: 12px;
+  color: var(--error-100);
+  display: block;
+  margin-top: 8px;
+}
+.input {
+  height: 32px;
+  padding-left: 10px;
+  border: 1px solid transparent;
+  background: transparent;
+  font-size: 14px;
+  padding-right: 10px;
+  color: var(--text-900);
+  width: 100%;
+  font-family: "Lato", sans-serif;
+  outline: none;
+  box-shadow: 0px 0px 0px 1px rgba(9, 25, 72, 0.13),
+    0px 1px 2px 0px rgba(18, 55, 105, 0.08);
+  border-radius: 6px;
+
+  &:disabled,
+  &:disabled:hover {
+    cursor: not-allowed;
+    background: var(--bg-0);
+    box-shadow: none;
+  }
+
+  &:hover {
+    box-shadow: 0px 0px 0px 1px rgba(9, 25, 72, 0.16),
+      0px 1px 2px 0px rgba(9, 25, 72, 0.16);
+  }
+
+  &:focus {
+    box-shadow: 0px 0px 0px 1px rgba(13, 13, 18, 0.32), 0px 0px 0px 2px #fff,
+      0px 0px 0px 1px #0d0d12, 0px 1px 2px 0px rgba(50, 44, 160, 0.4);
+  }
+}
+.input::placeholder,
+.textarea::placeholder {
+  color: var(--text-400);
+}
+.textarea {
+  padding: 12px 10px;
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  resize: vertical;
+  min-height: 100px;
+  height: 100px;
+  outline: none;
+  font-family: "Lato", sans-serif;
+  outline: none;
+  box-shadow: 0px 0px 0px 1px rgba(9, 25, 72, 0.13),
+    0px 1px 2px 0px rgba(18, 55, 105, 0.08);
+  border-radius: 6px;
+  color: var(--text-900);
+}
+.icon {
+  position: absolute;
+  right: 10px;
+  top: 2.2rem;
+  width: 20px;
+  height: auto;
+  cursor: pointer;
+}
+
+.error .input,
+.error .textarea {
+  border-color: var(--error-100);
+ box-shadow: none;
+}
+.req {
+  color: var(--error-100);
+  font-weight: 600;
+}
+.length {
+  text-align: right;
+  font-size: 12px;
+  color: #94a3b8;
+}

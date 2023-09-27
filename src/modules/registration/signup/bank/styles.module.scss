@@ -1,0 +1,59 @@
+.form {
+  max-height: calc(100vh - 361px);
+  overflow: auto;
+  padding: 0 2rem 0;
+  max-width: 534px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  &::-webkit-scrollbar {
+    width: 2px;
+  }
+}
+.halfInput {
+  width: 48%;
+}
+.btnWrap {
+  border-top: 1px solid var(--background-hover-50, #eceff3);
+  padding: 1rem;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  background: var(--white);
+
+  > div {
+    max-width: 470px;
+    margin: auto;
+    display: flex;
+    justify-content: flex-end;
+
+    button {
+      margin-left: 12px;
+      display: flex;
+      align-items: center;
+
+      svg {
+        transform: rotate(-90deg);
+        margin-left: 10px;
+
+        path {
+          stroke: var(--white);
+        }
+      }
+
+      &.previous svg {
+        transform: rotate(90deg);
+        margin-left: 0;
+        margin-right: 10px;
+
+        path {
+          stroke: var(--bg-900);
+        }
+      }
+    }
+  }
+}
+

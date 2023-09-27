@@ -1,0 +1,21 @@
+.bg {
+  border-bottom: 1px solid #eceff3;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1118px;
+  margin: auto;
+  padding: 12px 1rem;
+
+  &__logo {
+  }
+
+  &__btns {
+    button {
+      margin-left: 8px;
+    }
+  }
+}

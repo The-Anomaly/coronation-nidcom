@@ -8,14 +8,26 @@
 }
 
 :root {
-  --bg-900: #f8fafb;
-  --back: #0d0d12;
+  --white: #fff;
 
+  /* Backgrounds colors */
+  --bg-900: #0d0d12;
+  --bg-0: #f8fafb;
+  --bg-50: #eceff3;
+
+  /* Text colors */
   --text-400: #818898;
   --text-500: #666d80;
   --text-600: #36394a;
   --text-900: #0d0d12;
+
+  /* Grays */
+  --gray-300: #d0d5dd;
   --gray-700: #344054;
+
+  /* Red */
+  --error-0: #fff0f3;
+  --error-100: #df1c41;
 }
 
 body {
@@ -23,9 +35,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: "Lato", sans-serif;
-  color: var(-text-normal);
+  color: var(--text-900);
   font-size: 14px;
-  background: var(--bg-900);
+  background: var(--white);
 }
 
 button,
@@ -43,7 +55,7 @@ textarea {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px var(--gray-700);
+  box-shadow: inset 0 0 5px var(--bg-50);
   border-radius: 5px;
 }
 
@@ -85,7 +97,7 @@ a {
 img,
 svg {
   /* width: 100%; */
-  height: 100%;
+  height: auto;
 }
 
 fieldset {
@@ -101,5 +113,6 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  -webkit-box-shadow: 0px 0px 0px 1px rgba(9, 25, 72, 0.13),
+  0px 1px 2px 0px rgba(18, 55, 105, 0.08) white !important;
 }
