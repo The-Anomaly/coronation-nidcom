@@ -5,54 +5,48 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { Button, Input } from "components";
 import { Link } from "react-router-dom";
 import { Routes } from "router";
+import { Chevron } from "assets";
 
-interface LoginData {
+interface ForgotPasswordData {
   email: string;
-  password: string;
 }
 
-const initLoginData: LoginData = {
+const initForgotPasswordData: ForgotPasswordData = {
   email: "",
-  password: "",
 };
 
 const schema = yup
   .object({
     email: yup.string().email("Enter a valid email").required("Required"),
-    password: yup
-      .string()
-      .required("Required")
-      .min(8, "Password should be at least 8 characters long")
-      .matches(/[A-Z]/, "Password should contain an uppercase character")
-      .matches(/[a-z]/, "Password should contain an lowercase character")
-      .matches(/[0-9]/, "Password should contain at least one number"),
   })
   .required();
 
-interface LoginProps {
-  submit: (data: LoginData) => void;
+interface ForgotPasswordProps {
+  submit: (data: ForgotPasswordData) => void;
 }
 
-const LoginUI: React.FC<LoginProps> = ({ submit }) => {
+const ForgotPasswordUI: React.FC<ForgotPasswordProps> = ({ submit }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
     watch,
-  } = useForm<LoginData>({
+  } = useForm<ForgotPasswordData>({
     resolver: yupResolver(schema),
-    defaultValues: initLoginData,
+    defaultValues: initForgotPasswordData,
   });
 
-  const onSubmit: SubmitHandler<LoginData> = (data) => {
+  const onSubmit: SubmitHandler<ForgotPasswordData> = (data) => {
     submit(data);
   };
 
   return (
     <>
       <main className={styles.main}>
-        <h1 className={styles.ttl}>Login to your Account</h1>
-        <p className={styles.txt}>Welcome back👋🏾, Please enter your details</p>
+        <h1 className={styles.ttl}>Forgot password?</h1>
+        <p className={styles.txt}>
+          Enter the email associated with your account
+        </p>
         <form className={styles.form}>
           <Input
             label="Email"
@@ -64,28 +58,16 @@ const LoginUI: React.FC<LoginProps> = ({ submit }) => {
             register={register}
             value={watch("email")}
           />
-          <Input
-            label="Password"
-            placeholder="Enter your password"
-            type="password"
-            required
-            validatorMessage={errors.password?.message}
-            name="password"
-            register={register}
-            value={watch("password")}
-          />
-          <Link className={styles.forgot} to={Routes.forgotPassword}>
-            Forgot Password
-          </Link>
+
           <Button
             className={styles.btn}
             onClick={handleSubmit(onSubmit)}
             variant="fill-black"
           >
-            Log In
+            Reset password
           </Button>
           <p className={styles.link}>
-            Don’t have an Account? <Link to={Routes.home}>Sign up</Link>.
+            <Chevron /> Go back to <Link to={Routes.login}>Log in</Link>
           </p>
         </form>
         <footer className={styles.footerWrap}>
@@ -103,4 +85,4 @@ const LoginUI: React.FC<LoginProps> = ({ submit }) => {
   );
 };
 
-export { LoginUI };
+export { ForgotPasswordUI };

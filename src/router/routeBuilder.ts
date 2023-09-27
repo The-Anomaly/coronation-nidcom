@@ -1,4 +1,4 @@
-import { Login, Signup } from "pages";
+import { ForgotPassword, Login, Signup } from "pages";
 import { PathRouteProps } from "react-router-dom";
 import { Routes } from "./routes";
 import { AuthLayout } from "layout";
@@ -35,7 +35,13 @@ export const RouteBuilder: RouteBuilderItem[] = [
     Layout: AuthLayout,
   },
   {
+    path: Routes.forgotPassword,
+    Element: ForgotPassword,
+    Layout: AuthLayout,
+  },
+  {
     path: "*",
     Element: Signup,
+    Layout: AuthLayout,
   },
 ];
