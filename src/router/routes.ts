@@ -12,4 +12,10 @@ export const Routes = {
   home: "/",
   login: "/login",
   forgotPassword: "/forgot-password",
+  dashboard: "/dashboard",
+  products: "/products",
+  portfolio: "/portfolio",
+  wallet: "/wallet",
+  profile: "/profile",
+  contact: "/contact",
 };

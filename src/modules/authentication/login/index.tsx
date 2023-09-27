@@ -19,13 +19,7 @@ const initLoginData: LoginData = {
 const schema = yup
   .object({
     email: yup.string().email("Enter a valid email").required("Required"),
-    password: yup
-      .string()
-      .required("Required")
-      .min(8, "Password should be at least 8 characters long")
-      .matches(/[A-Z]/, "Password should contain an uppercase character")
-      .matches(/[a-z]/, "Password should contain an lowercase character")
-      .matches(/[0-9]/, "Password should contain at least one number"),
+    password: yup.string().required("Required"),
   })
   .required();
 
