@@ -13,6 +13,7 @@ import {
 } from "components";
 import { Chevron } from "assets";
 import { employmentOptions, genderOptions } from "./options";
+import { useEffect } from "react";
 
 interface NextOfKinFormData {
   relationship: string;
@@ -56,10 +57,19 @@ const NextOfKinForm: React.FC<NextOfKinFormProps> = ({ submit, previous }) => {
     formState: { errors },
     watch,
     setValue,
+    reset,
   } = useForm<NextOfKinFormData>({
     resolver: yupResolver(schema),
     defaultValues: initNextOfKinFormData,
   });
+
+  useEffect(() => {
+    const storageData = localStorage.getItem("signupNextOfKin");
+    if (storageData) {
+      const data = JSON.parse(storageData);
+      reset(data);
+    }
+  }, []);
 
   const onSubmit: SubmitHandler<NextOfKinFormData> = (data) => {
     submit(data);

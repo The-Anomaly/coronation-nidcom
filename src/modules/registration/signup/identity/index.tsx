@@ -12,6 +12,7 @@ import {
 } from "components";
 import { Chevron } from "assets";
 import { idOptions } from "./options";
+import { useEffect } from "react";
 
 interface IdentityFormData {
   meansOfId: OptionType;
@@ -57,10 +58,19 @@ const IdentityForm: React.FC<IdentityFormProps> = ({
     formState: { errors },
     watch,
     setValue,
+    reset,
   } = useForm<IdentityFormData>({
     resolver: yupResolver(schema),
     defaultValues: initIdentityFormData,
   });
+
+  useEffect(() => {
+    const storageData = localStorage.getItem("signupIdentity");
+    if (storageData) {
+      const data = JSON.parse(storageData);
+      reset(data);
+    }
+  }, []);
 
   const onSubmit: SubmitHandler<IdentityFormData> = (data) => {
     submit(data);

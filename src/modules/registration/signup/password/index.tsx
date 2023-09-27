@@ -4,6 +4,7 @@ import * as yup from "yup";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Button, Input } from "components";
 import { Chevron } from "assets";
+import { useEffect } from "react";
 
 interface PasswordFormData {
   username: string;
@@ -45,11 +46,19 @@ const PasswordForm: React.FC<PasswordFormProps> = ({ submit, previous }) => {
     handleSubmit,
     formState: { errors },
     watch,
-    setValue,
+    reset,
   } = useForm<PasswordFormData>({
     resolver: yupResolver(schema),
     defaultValues: initPasswordFormData,
   });
+
+  useEffect(() => {
+    const storageData = localStorage.getItem("signupPassword");
+    if (storageData) {
+      const data = JSON.parse(storageData);
+      reset(data);
+    }
+  }, []);
 
   const onSubmit: SubmitHandler<PasswordFormData> = (data) => {
     submit(data);

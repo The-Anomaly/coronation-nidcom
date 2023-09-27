@@ -11,6 +11,7 @@ import {
   optionTypeSchemaReq,
 } from "components";
 import { Chevron } from "assets";
+import { useEffect } from "react";
 
 const titleOptions: OptionType[] = [
   {
@@ -82,10 +83,19 @@ const AgreementForm: React.FC<AgreementFormProps> = ({ submit }) => {
     formState: { errors },
     watch,
     setValue,
+    reset,
   } = useForm<AgreementFormData>({
     resolver: yupResolver(schema),
     defaultValues: initAgreementFormData,
   });
+
+  useEffect(() => {
+    const storageData = localStorage.getItem("signupAgreement");
+    if (storageData) {
+      const data = JSON.parse(storageData);
+      reset(data);
+    }
+  }, []);
 
   const onSubmit: SubmitHandler<AgreementFormData> = (data) => {
     submit(data);
@@ -143,7 +153,7 @@ const AgreementForm: React.FC<AgreementFormProps> = ({ submit }) => {
           register={register}
           value={watch("email")}
         />
-        <div className={styles.check} >
+        <div className={styles.check}>
           <label>
             <input
               type="checkbox"
@@ -155,8 +165,8 @@ const AgreementForm: React.FC<AgreementFormProps> = ({ submit }) => {
               }
             />
             <p>
-              By clicking here, you agree to our <a>Terms & Condition</a> | <a>Privacy
-              Policy</a>
+              By clicking here, you agree to our <a>Terms & Condition</a> |{" "}
+              <a>Privacy Policy</a>
             </p>
           </label>
           <p>{errors.acceptConditions?.message}</p>

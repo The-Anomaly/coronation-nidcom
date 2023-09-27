@@ -16,7 +16,7 @@ import {
 } from "assets";
 import styles from "./styles.module.scss";
 import { Routes } from "router";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 type pages =
   | "dashboard"
@@ -36,6 +36,8 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({
   title,
   children,
 }) => {
+  const navigate = useNavigate();
+
   const navItems: NavItemProps[] = [
     {
       text: "Dashboard",
@@ -78,7 +80,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({
     {
       text: "Logout",
       icon: <LogoutIcon />,
-      onClick: () => {},
+      onClick: () => navigate(Routes.login),
     },
   ];
   return (

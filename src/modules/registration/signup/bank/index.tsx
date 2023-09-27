@@ -12,6 +12,7 @@ import {
 } from "components";
 import { Chevron } from "assets";
 import { accountCurrencyOptions, accountTypeOptions } from "./options";
+import { useEffect } from "react";
 
 interface BankFormData {
   swiftCode: string;
@@ -78,10 +79,19 @@ const BankForm: React.FC<BankFormProps> = ({ submit, previous }) => {
     formState: { errors },
     watch,
     setValue,
+    reset,
   } = useForm<BankFormData>({
     resolver: yupResolver(schema),
     defaultValues: initBankFormData,
   });
+
+  useEffect(() => {
+    const storageData = localStorage.getItem("signupBankInfo");
+    if (storageData) {
+      const data = JSON.parse(storageData);
+      reset(data);
+    }
+  }, []);
 
   const onSubmit: SubmitHandler<BankFormData> = (data) => {
     submit(data);

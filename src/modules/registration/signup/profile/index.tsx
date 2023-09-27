@@ -13,6 +13,7 @@ import {
 } from "components";
 import { Chevron } from "assets";
 import { employmentOptions, genderOptions } from "./options";
+import { useEffect } from "react";
 
 interface ProfileFormData {
   gender: OptionType;
@@ -85,10 +86,19 @@ const ProfileForm: React.FC<ProfileFormProps> = ({
     formState: { errors },
     watch,
     setValue,
+    reset,
   } = useForm<ProfileFormData>({
     resolver: yupResolver(schema),
     defaultValues: initProfileFormData,
   });
+
+  useEffect(() => {
+    const storageData = localStorage.getItem("signupProfile");
+    if (storageData) {
+      const data = JSON.parse(storageData);
+      reset(data);
+    }
+  }, []);
 
   const onSubmit: SubmitHandler<ProfileFormData> = (data) => {
     submit(data);
