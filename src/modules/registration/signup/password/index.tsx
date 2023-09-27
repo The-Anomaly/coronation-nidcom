@@ -2,14 +2,7 @@ import styles from "./styles.module.scss";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm, SubmitHandler } from "react-hook-form";
-import {
-  Button,
-  Input,
-  OptionType,
-  Select,
-  initOptionType,
-  optionTypeSchemaReq,
-} from "components";
+import { Button, Input } from "components";
 import { Chevron } from "assets";
 
 interface PasswordFormData {
