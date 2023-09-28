@@ -25,6 +25,9 @@
   margin: 0 auto 2rem;
   justify-content: space-between;
   width: 90%;
+  white-space: nowrap;
+  overflow: auto;
+  overflow-y: hidden;
 
   span {
     display: flex;
