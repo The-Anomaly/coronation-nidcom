@@ -51,7 +51,6 @@ const PasswordForm: React.FC<PasswordFormProps> = ({ submit }) => {
     handleSubmit,
     formState: { errors },
     watch,
-    reset,
   } = useForm<PasswordFormData>({
     resolver: yupResolver(schema),
     defaultValues: initPasswordFormData,
@@ -97,7 +96,15 @@ const PasswordForm: React.FC<PasswordFormProps> = ({ submit }) => {
       </form>
       <section className={styles.btnWrap}>
         <div>
-          <Button onClick={handleSubmit(onSubmit)} variant="fill-black">
+          <Button
+            disabled={
+              watch("password") === "" ||
+              watch("password1") === "" ||
+              watch("password2") === ""
+            }
+            onClick={handleSubmit(onSubmit)}
+            variant="fill-black"
+          >
             Save <TickCircle />
           </Button>
         </div>

@@ -27,4 +27,8 @@
     background: transparent;
     border-color: var(--bg-900);
   }
+
+  &:disabled {
+    opacity: 0.24;
+  }
 }

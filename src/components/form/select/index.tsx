@@ -43,6 +43,7 @@ interface SelectProps {
   value: OptionType;
   onChange: (val: OptionType) => void;
   required?: boolean;
+  disabled?: boolean;
 }
 
 const Select: React.FC<SelectProps> = (props) => {
@@ -58,6 +59,7 @@ const Select: React.FC<SelectProps> = (props) => {
     onChange,
     className,
     required,
+    disabled,
   } = props;
 
   const [show, setList] = React.useState(false);
@@ -89,17 +91,20 @@ const Select: React.FC<SelectProps> = (props) => {
         </label>
       )}
       <div
-        onClick={() => setList((prev) => !prev)}
-        className={`${className} ${styles.input}`}
+        onClick={() => setList((prev) => (!disabled ? !prev : false))}
+        className={`${className} ${styles.input} ${
+          disabled ? styles.disabled : ""
+        }`}
       >
         <input
           onChange={(e) => setState(e.target.value)}
           value={state}
           className={value.value === "" ? styles.placeholder : ""}
           placeholder={placeholder}
+          disabled={disabled}
         />
 
-        <Chevron role="button" />
+        <Chevron role={disabled ? "" : "button"} />
       </div>
       {show ? (
         <div className={styles.optionsList}>

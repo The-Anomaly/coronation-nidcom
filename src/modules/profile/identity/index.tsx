@@ -124,7 +124,13 @@ const IdentityForm: React.FC<IdentityFormProps> = ({ submit, countries }) => {
       </form>
       <section className={styles.btnWrap}>
         <div>
-          <Button onClick={handleSubmit(onSubmit)} variant="fill-black">
+          <Button
+            disabled={
+              localStorage.getItem("signupIdentity") === JSON.stringify(watch())
+            }
+            onClick={handleSubmit(onSubmit)}
+            variant="fill-black"
+          >
             Save <TickCircle />
           </Button>
         </div>

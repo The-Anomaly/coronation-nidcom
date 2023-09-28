@@ -110,6 +110,7 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ submit, countries }) => {
           value={watch("gender")}
           onChange={(val) => setValue("gender", val)}
           options={genderOptions}
+          disabled
         />
         <Input
           label="Date of birth"
@@ -121,6 +122,7 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ submit, countries }) => {
           register={register}
           value={watch("dateOfBirth")}
           parentClassName={styles.halfInput}
+          disabled
         />
         <Input
           label="Mothers maiden name"
@@ -132,6 +134,7 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ submit, countries }) => {
           register={register}
           value={watch("mothersMaidenName")}
           parentClassName={styles.halfInput}
+          disabled
         />
 
         <Select
@@ -249,7 +252,13 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ submit, countries }) => {
       </form>
       <section className={styles.btnWrap}>
         <div>
-          <Button onClick={handleSubmit(onSubmit)} variant="fill-black">
+          <Button
+            disabled={
+              localStorage.getItem("signupProfile") === JSON.stringify(watch())
+            }
+            onClick={handleSubmit(onSubmit)}
+            variant="fill-black"
+          >
             Save <TickCircle />
           </Button>
         </div>

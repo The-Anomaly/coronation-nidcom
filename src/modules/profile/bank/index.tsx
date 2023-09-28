@@ -208,7 +208,13 @@ const BankForm: React.FC<BankFormProps> = ({ submit }) => {
       </form>
       <section className={styles.btnWrap}>
         <div>
-          <Button onClick={handleSubmit(onSubmit)} variant="fill-black">
+          <Button
+            disabled={
+              localStorage.getItem("signupBankInfo") === JSON.stringify(watch())
+            }
+            onClick={handleSubmit(onSubmit)}
+            variant="fill-black"
+          >
             Save <TickCircle />
           </Button>
         </div>

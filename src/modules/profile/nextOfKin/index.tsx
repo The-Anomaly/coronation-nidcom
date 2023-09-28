@@ -49,7 +49,7 @@ interface NextOfKinFormProps {
   submit: (data: NextOfKinFormData) => void;
 }
 
-const NextOfKinForm: React.FC<NextOfKinFormProps> = ({ submit,  }) => {
+const NextOfKinForm: React.FC<NextOfKinFormProps> = ({ submit }) => {
   const {
     register,
     handleSubmit,
@@ -130,8 +130,14 @@ const NextOfKinForm: React.FC<NextOfKinFormProps> = ({ submit,  }) => {
       </form>
       <section className={styles.btnWrap}>
         <div>
-         
-          <Button onClick={handleSubmit(onSubmit)} variant="fill-black">
+          <Button
+            disabled={
+              localStorage.getItem("signupNextOfKin") ===
+              JSON.stringify(watch())
+            }
+            onClick={handleSubmit(onSubmit)}
+            variant="fill-black"
+          >
             Save <TickCircle />
           </Button>
         </div>

@@ -44,10 +44,16 @@
   input {
     border: none;
     background: transparent;
+
+    &:disabled {
+      cursor: not-allowed;
+    }
   }
 
-  &:disabled {
+  &.disabled {
     cursor: not-allowed;
+    background: var(--bg-0);
+    box-shadow: none;
   }
 
   &::placeholder {
