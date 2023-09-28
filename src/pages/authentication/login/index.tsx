@@ -9,6 +9,7 @@ const Login = () => {
     navigate(Routes.dashboard);
     localStorage.setItem("walletBalance", "0");
     localStorage.setItem("investmentBalance", "0");
+    localStorage.setItem("transactions", `[]`) 
   };
 
   return (

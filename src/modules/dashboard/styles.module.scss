@@ -287,3 +287,16 @@
     margin-bottom: 14px;
   }
 }
+
+.empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+
+  p {
+    color: var(--text-500);
+    font-size: 12px;
+  }
+}

@@ -6,16 +6,25 @@ import {
   EyeSlashIcon,
   SendIcon,
   WalletAddIcon,
+  emptyBoxImg,
   moneyImg,
   paymentImg,
   wheelImg,
 } from "assets";
 
 const DashboardUI = () => {
+  const data = JSON.parse(localStorage.getItem("signupAgreement") ?? "");
+
+  const wallet = JSON.parse(localStorage.getItem("walletBalance") ?? "");
+  const investment = JSON.parse(
+    localStorage.getItem("investmentBalance") ?? ""
+  );
+  const transactions = JSON.parse(localStorage.getItem("transactions") ?? "");
+
   return (
     <>
       <section className={styles.heading}>
-        <p className={styles.heading__ttl}>Hi Benjamin 👋🏾</p>
+        <p className={styles.heading__ttl}>Hi {data.firstName} 👋🏾</p>
         <p className={styles.heading__txt}>
           Welcome to Coronation, Lets help you build wealth!
         </p>
@@ -27,7 +36,7 @@ const DashboardUI = () => {
               Investment balance <EyeSlashIcon />{" "}
             </p>
             <p className={styles.amount}>
-              <span style={{ fontWeight: "700" }}>₦</span> 400,000,000.
+              <span style={{ fontWeight: "700" }}>₦</span> {investment}.
               <span style={{ fontSize: "80%" }}>00</span>
               <span className={styles.arrow}>
                 <ArrowIcon /> 16.80 %
@@ -45,7 +54,7 @@ const DashboardUI = () => {
           <div className={`${styles.card} ${styles.card2}`}>
             <p className={styles.tag}>Wallet balance</p>
             <p className={styles.amount}>
-              <span style={{ fontWeight: "700" }}>₦</span> 20,000,000.
+              <span style={{ fontWeight: "700" }}>₦</span> {wallet}.
               <span style={{ fontSize: "80%" }}>00</span>
             </p>
             <div className={styles.btns}>
@@ -62,63 +71,22 @@ const DashboardUI = () => {
               A view of all the transactions you have made
             </p>
           </section>
-          <TransactionItem
-            type="deposit"
-            date="12 Apr. 2023"
-            time="11:24 AM"
-            amount="400, 000.00"
-            id="47458593030302111"
-          />
-          <TransactionItem
-            type="withdrawal"
-            date="12 Apr. 2023"
-            time="11:24 AM"
-            amount="400, 000.00"
-            id="47458593030302111"
-          />
-          <TransactionItem
-            type="deposit"
-            date="12 Apr. 2023"
-            time="11:24 AM"
-            amount="400, 000.00"
-            id="47458593030302111"
-          />
-          <TransactionItem
-            type="withdrawal"
-            date="12 Apr. 2023"
-            time="11:24 AM"
-            amount="400, 000.00"
-            id="47458593030302111"
-          />
-          <TransactionItem
-            type="deposit"
-            date="12 Apr. 2023"
-            time="11:24 AM"
-            amount="400, 000.00"
-            id="47458593030302111"
-          />
-          <TransactionItem
-            type="withdrawal"
-            date="12 Apr. 2023"
-            time="11:24 AM"
-            amount="400, 000.00"
-            id="47458593030302111"
-          />
-          <TransactionItem
-            type="deposit"
-            date="12 Apr. 2023"
-            time="11:24 AM"
-            amount="400, 000.00"
-            id="47458593030302111"
-          />
-          <TransactionItem
-            type="withdrawal"
-            date="12 Apr. 2023"
-            time="11:24 AM"
-            amount="400, 000.00"
-            id="47458593030302111"
-          />
-          <button className={styles.viewAll}>View all</button>
+          {transactions.length > 0 ? (
+            <>
+              {transactions.slice(0, 8).map((item) => (
+                <TransactionItem {...item} />
+              ))}
+
+              {transactions.length > 8 && (
+                <button className={styles.viewAll}>View all</button>
+              )}
+            </>
+          ) : (
+            <div className={styles.empty}>
+              <img src={emptyBoxImg} alt="empty box" />
+              <p>You have not made any transaction yet</p>
+            </div>
+          )}
         </section>
         <section>
           <section className={`${styles.heading} ${styles.subHeading}`}>
@@ -160,7 +128,7 @@ Lorem ipsum dolor sit amet consectetur. Dolor eget ac dictumst elementum cras am
 };
 
 interface TransactionItemProps {
-  type: "deposit" | "withdrawal";
+  type: "deposit" | "withdrawal" | "investment";
   date: string;
   time: string;
   amount: string;
@@ -178,7 +146,9 @@ const TransactionItem: React.FC<TransactionItemProps> = ({
     <div className={styles.transaction}>
       <ArrowIcon
         className={`${
-          type === "deposit" ? styles.deposit : styles.withdrawal
+          type === "deposit"
+            ? styles.deposit
+            : styles.withdrawal
         } ${styles.transaction__icon}`}
       />
       <div className={styles.info1}>
@@ -225,8 +195,6 @@ const ProductItem: React.FC<ProductItemProps> = ({
             )}
           </p>
           <p className={styles.product__content__txt}>{text}</p>
-
-         
         </div>
         {!isComingSoon && <Button variant="outline">Invest</Button>}
       </div>

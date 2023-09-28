@@ -3,7 +3,10 @@ import styles from "./styles.module.scss";
 import { UseFormRegister } from "react-hook-form";
 
 interface InputProps
-  extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
+  extends React.DetailedHTMLProps<
+    React.InputHTMLAttributes<HTMLInputElement>,
+    HTMLInputElement
+  > {
   dataTestID?: string;
   placeholder: string;
   className?: string;
@@ -15,6 +18,7 @@ interface InputProps
   iconFunction?: () => void;
   register: UseFormRegister<any>;
   showRequired?: boolean;
+  hint?: string;
 }
 
 const Input: React.FC<InputProps> = (props) => {
@@ -33,7 +37,8 @@ const Input: React.FC<InputProps> = (props) => {
     required,
     minLength,
     onChange,
-    min
+    min,
+    hint,
   } = props;
   return (
     <div
@@ -65,11 +70,13 @@ const Input: React.FC<InputProps> = (props) => {
           required: required,
           minLength: minLength,
           onChange: onChange,
-          min: min
+          min: min,
         })}
       />
-
-      {validatorMessage && <small className={styles.message}>{validatorMessage}</small>}
+      {hint && <small className={styles.hint}>{hint}</small>}
+      {validatorMessage && (
+        <small className={styles.message}>{validatorMessage}</small>
+      )}
     </div>
   );
 };
@@ -110,7 +117,7 @@ const Textarea: React.FC<TextareaProps> = (props) => {
     onChange,
     showRequired,
     max,
-    value = ""
+    value = "",
   } = props;
   return (
     <div
@@ -141,7 +148,7 @@ const Textarea: React.FC<TextareaProps> = (props) => {
         {...register(name, {
           required: required,
           onChange: onChange,
-          max: max
+          max: max,
         })}
       />
       {max ? (
@@ -151,7 +158,9 @@ const Textarea: React.FC<TextareaProps> = (props) => {
       ) : (
         ""
       )}
-      {validatorMessage && <small className={styles.message}>{validatorMessage}</small>}
+      {validatorMessage && (
+        <small className={styles.message}>{validatorMessage}</small>
+      )}
     </div>
   );
 };

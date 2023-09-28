@@ -83,6 +83,9 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({
       onClick: () => navigate(Routes.login),
     },
   ];
+
+  const data = JSON.parse(localStorage.getItem("signupAgreement") ?? "");
+  const id = JSON.parse(localStorage.getItem("signupIdentity") ?? "");
   return (
     <>
       <header className={styles.header}>
@@ -108,10 +111,12 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({
         </section>
 
         <section className={styles.sidebar__profile}>
-          <span className={styles.sidebar__profile__avatar}>BO</span>{" "}
+          <span className={styles.sidebar__profile__avatar}>{data.firstName.charAt(0)}{data.lastName.charAt(0)}</span>{" "}
           <div>
-            <p className={styles.sidebar__profile__name}>Benjamin Okeke</p>
-            <p className={styles.sidebar__profile__id}>ID:55778899</p>
+            <p className={styles.sidebar__profile__name}>
+              {data.firstName} {data.lastName}
+            </p>
+            <p className={styles.sidebar__profile__id}>ID:{id.idNo}</p>
           </div>
         </section>
       </aside>

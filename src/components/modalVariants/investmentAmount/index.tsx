@@ -9,20 +9,44 @@ const InvestmentAmount = ({ show, close, back, complete }) => {
   const [insufficient, setInsufficient] = useState(false);
   const [value, setValue] = useState("");
 
-  const balance = 20000;
+  const balance = JSON.parse(localStorage.getItem("walletBalance") ?? "");
+
   const limit = 10000;
 
   const onSubmit = () => {
     if (parseFloat(value) < limit) {
       setInsufficient(false);
       return setError("Minimum investment is ₦ 10,000");
-    } else if (parseFloat(value) > balance) {
+    } else if (parseFloat(value) > parseFloat(balance)) {
       setError("");
       return setInsufficient(true);
     } else {
       setError("");
       setInsufficient(false);
       complete();
+
+      const transactions: any[] = JSON.parse(
+        localStorage.getItem("transactions") ?? ""
+      );
+
+      const transaction = {
+        type: "investment",
+        amount: value,
+        date: new Date().toDateString(),
+        time: new Date().toLocaleTimeString(),
+        reference: new Date().toLocaleTimeString().split(":").join(""),
+      };
+
+      transactions.unshift(transaction);
+      localStorage.setItem("transactions", JSON.stringify(transactions));
+
+      const prevBalance = parseFloat(
+        localStorage.getItem("investmentBalance") ?? "0"
+      );
+      localStorage.setItem(
+        "investmentBalance",
+        `${prevBalance + parseFloat(value)}`
+      );
     }
   };
 

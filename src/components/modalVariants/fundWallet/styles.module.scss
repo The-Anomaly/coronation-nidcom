@@ -1,0 +1,141 @@
+.modal {
+  padding: 1.5rem 2rem;
+}
+
+.nav {
+  border-top: 1px solid #eceff3;
+  border-bottom: 1px solid #eceff3;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-size: 12px;
+
+  span {
+    color: var(--text-500);
+    padding: 14px 0;
+    display: inline-flex;
+    margin-right: 2rem;
+    align-items: center;
+
+    svg {
+      margin-right: 8px;
+    }
+
+    &.active {
+      color: var(--text-900);
+      border-bottom: 1px solid currentColor;
+      font-weight: 700;
+      margin-bottom: -1px;
+
+      svg path {
+        stroke: var(--bg-900);
+      }
+    }
+  }
+}
+
+.heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+
+  p {
+    font-weight: 600;
+  }
+}
+.subtxt {
+  font-size: 12px;
+  color: var(--text-500);
+}
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.halfInput {
+  width: 48%;
+}
+
+.btnSec {
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px solid #dfe1e7;
+  width: calc(100% + 4rem);
+  margin-left: -2rem;
+  margin-top: 1rem;
+  padding: 1rem 2rem 0;
+
+  button {
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+
+    svg {
+      margin-left: 6px;
+      width: 18px;
+      path {
+        stroke: var(--white);
+      }
+    }
+  }
+}
+
+.insufficient {
+  padding: 12px;
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  border-radius: 8px;
+  background: var(
+    --toast-bg-error,
+    linear-gradient(
+      0deg,
+      rgba(223, 28, 65, 0.02) 0%,
+      rgba(223, 28, 65, 0.02) 100%
+    ),
+    rgba(255, 255, 255, 0.93)
+  );
+  box-shadow: 0px 0px 0px 1px rgba(223, 28, 65, 0.16),
+    0px 1px 2px 0px rgba(150, 19, 44, 0.12);
+  backdrop-filter: blur(6px);
+
+  svg {
+    width: 18px;
+  }
+
+  div {
+    p:first-of-type {
+      color: #5c3d1f;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    p:last-of-type {
+      color: var(--text-500);
+      font-size: 12px;
+    }
+  }
+}
+
+.bankInfo {
+  margin: 1.2rem 0;
+  p:first-of-type {
+    color: var(--text-500);
+    margin-bottom: 6px;
+    font-size: 12px;
+  }
+
+  p:last-of-type {
+    color: var(--text-900);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    svg {
+      margin-left: 12px;
+    }
+  }
+
+  &:last-of-type {
+    margin-bottom: 2rem;
+  }
+}

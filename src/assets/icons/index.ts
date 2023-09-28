@@ -32,8 +32,12 @@ import { ReactComponent as LinkedinIcon } from "./linkedinIcon.svg";
 import { ReactComponent as FacebookIcon } from "./facebookIcon.svg";
 import { ReactComponent as CardIcon } from "./cardIcon.svg";
 import { ReactComponent as AlertCircleIcon } from "./alertCircleIcon.svg";
+import { ReactComponent as CardsIcon } from "./cardsIcon.svg";
+import { ReactComponent as CopyIcon } from "./copyIcon.svg";
 
 export {
+  CopyIcon,
+  CardsIcon,
   AlertCircleIcon,
   CardIcon,
   InstagramIcon,
