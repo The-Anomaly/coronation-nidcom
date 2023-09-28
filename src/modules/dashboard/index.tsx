@@ -12,7 +12,7 @@ import {
   wheelImg,
 } from "assets";
 
-const DashboardUI = () => {
+const DashboardUI = ({ fund, portfolio, investing }) => {
   const data = JSON.parse(localStorage.getItem("signupAgreement") ?? "");
 
   const wallet = JSON.parse(localStorage.getItem("walletBalance") ?? "");
@@ -43,10 +43,14 @@ const DashboardUI = () => {
               </span>
             </p>
             <div className={styles.btns}>
-              <Button variant="fill-white">
+              <Button onClick={investing} variant="fill-white">
                 Start investing <SendIcon />
               </Button>
-              <Button className={styles.transparent} variant="fill-white">
+              <Button
+                onClick={portfolio}
+                className={styles.transparent}
+                variant="fill-white"
+              >
                 View portfolio <BriefCaseIcon />
               </Button>
             </div>
@@ -58,7 +62,7 @@ const DashboardUI = () => {
               <span style={{ fontSize: "80%" }}>00</span>
             </p>
             <div className={styles.btns}>
-              <Button variant="outline">
+              <Button onClick={fund} variant="outline">
                 Fund wallet <WalletAddIcon />
               </Button>
             </div>
@@ -146,9 +150,7 @@ const TransactionItem: React.FC<TransactionItemProps> = ({
     <div className={styles.transaction}>
       <ArrowIcon
         className={`${
-          type === "deposit"
-            ? styles.deposit
-            : styles.withdrawal
+          type === "deposit" ? styles.deposit : styles.withdrawal
         } ${styles.transaction__icon}`}
       />
       <div className={styles.info1}>

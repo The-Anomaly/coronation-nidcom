@@ -9,6 +9,8 @@ const Portfolio = () => {
   const [success, setSuccess] = useState(false);
   const [redeem, setRedeem] = useState(false);
 
+  const handleInvesting = () => navigate(Routes.products);
+
   return (
     <>
       <RedeemInvestment show={redeem} close={() => setRedeem(false)} />
@@ -24,7 +26,7 @@ const Portfolio = () => {
         btnText="Go to wallet"
         btntOnClick={() => navigate(Routes.wallet)}
       />
-      <PortfolioUI />
+      <PortfolioUI handleInvesting={handleInvesting} />
     </>
   );
 };

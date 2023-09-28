@@ -1,4 +1,4 @@
-import { ArrowIcon, CardIcon, plantImg } from "assets";
+import { ArrowIcon, CardIcon, SendIcon, plantImg } from "assets";
 import styles from "./styles.module.scss";
 import { useState } from "react";
 import { Button } from "components";
@@ -77,7 +77,7 @@ const history: HistoryData[] = [
   },
 ];
 
-const PortfolioUI = () => {
+const PortfolioUI = ({ handleInvesting }) => {
   const [active, setActive] = useState(0);
   const tabs = [
     {
@@ -91,8 +91,8 @@ const PortfolioUI = () => {
         <section className={styles.overview}>
           <div className={styles.graphSec}>
             <Chart />
-            <div className={styles.legend} >
-              <p className={styles.color1} >Mutual funds 25%</p>
+            <div className={styles.legend}>
+              <p className={styles.color1}>Mutual funds 25%</p>
               <p className={styles.color2}>Equity 35%</p>
               <p className={styles.color3}>Fixed income fund 30%</p>
               <p className={styles.color4}>Balanced funds 10%</p>
@@ -106,8 +106,12 @@ const PortfolioUI = () => {
                 <ArrowIcon /> 16.80 %
               </span>
             </p>
-            <Button className={styles.info__btn} variant="fill-black">
-              Withdraw <CardIcon />
+            <Button
+              onClick={handleInvesting}
+              className={styles.info__btn}
+              variant="fill-black"
+            >
+              Start investing <SendIcon />
             </Button>
           </div>
         </section>
