@@ -5,7 +5,11 @@ import { Routes } from "router";
 const Login = () => {
   const navigate = useNavigate();
 
-  const login = () => navigate(Routes.dashboard);
+  const login = () => {
+    navigate(Routes.dashboard);
+    localStorage.setItem("walletBalance", "0");
+    localStorage.setItem("investmentBalance", "0");
+  };
 
   return (
     <>

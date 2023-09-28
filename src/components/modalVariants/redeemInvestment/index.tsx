@@ -3,7 +3,7 @@ import styles from "./styles.module.scss";
 import { CloseIcon, plantImg } from "assets";
 import { Button } from "components";
 
-const InvestmentInfo = ({ show, close, submit }) => {
+const RedeemInvestment = ({ show, close }) => {
   return (
     <Modal
       contentClassName={styles.modal}
@@ -25,6 +25,15 @@ const InvestmentInfo = ({ show, close, submit }) => {
           <p>Estimated Yield</p>
         </div>
       </section>
+      <section className={styles.sec3}>
+        <div>
+          <p>Investment amount</p>
+          <p>₦ 20,072.00</p>
+        </div>
+        <p className={styles.note}>
+          0.5 for pre-maturity withdrawal applies on income earned
+        </p>
+      </section>
       <section className={styles.sec2}>
         <div>
           <p>Risk level</p>
@@ -45,24 +54,16 @@ const InvestmentInfo = ({ show, close, submit }) => {
           </p>
         </div>
       </section>
-      <section className={styles.about}>
-        <p className={styles.about__ttl}>About this fund</p>
-        <p className={styles.about__txt}>
-          The Money Market Fund is an open-ended fund that invests in low risk
-          short-term instruments such as Treasury Bills, Term Deposits,
-          Commercial Papers and other Money Market securities. Our bottom-up
-          credit selection and tactical trading in the most liquid instruments
-          and fundamental process combined with robust, top-down rigorous risk
-          management tools designed to meet our objectives of liquidity and
-          consistent excess returns.
-        </p>
-        <a className={styles.about__link}>Learn more about this fund</a>
-      </section>
-      <section className={styles.btnSec} >
-        <Button onClick={submit} variant="fill-black">Continue</Button>
+      <p className={styles.note}>
+        Please not that the above estimate is based on historical performance in
+        the past 12 months. Actual returns may be higher or lower based on the
+        market performance
+      </p>
+      <section className={styles.btnSec}>
+        <Button variant="fill-black">Redeem investment</Button>
       </section>
     </Modal>
   );
 };
 
-export { InvestmentInfo };
+export { RedeemInvestment };

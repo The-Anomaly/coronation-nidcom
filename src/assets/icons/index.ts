@@ -31,8 +31,10 @@ import { ReactComponent as TwitterIcon } from "./twitterIcon.svg";
 import { ReactComponent as LinkedinIcon } from "./linkedinIcon.svg";
 import { ReactComponent as FacebookIcon } from "./facebookIcon.svg";
 import { ReactComponent as CardIcon } from "./cardIcon.svg";
+import { ReactComponent as AlertCircleIcon } from "./alertCircleIcon.svg";
 
 export {
+  AlertCircleIcon,
   CardIcon,
   InstagramIcon,
   TwitterIcon,

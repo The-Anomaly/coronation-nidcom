@@ -1,0 +1,40 @@
+.modal {
+  padding: 2rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.closeBtn {
+  margin-left: auto;
+  margin-bottom: 2rem;
+}
+.img {
+  margin-bottom: 1rem;
+}
+
+.ttl {
+  font-weight: 800;
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
+.txt {
+  color: var(--text-500);
+  font-size: 12px;
+  margin-bottom: 2rem;
+  max-width: 280px;
+  line-height: 1.4;
+
+  span {
+    color: var(--text-900);
+    font-weight: 600;
+  }
+}
+
+.btn {
+  font-size: 12px;
+  padding: 8px 14px;
+  margin-bottom: 1rem;
+}
