@@ -9,7 +9,7 @@ import {
 } from "assets";
 import { Button } from "components";
 
-const ProductsUI = () => {
+const ProductsUI = ({ subscribe }) => {
   const [active, setActive] = useState(0);
 
   const tabs = [
@@ -80,15 +80,15 @@ const ProductsUI = () => {
       )}
 
       {active === 0 ? (
-        <section className={styles.investments} >
-         <InvestmentCard />
-         <InvestmentCard />
-         <InvestmentCard />
-         <InvestmentCard />
-         <InvestmentCard />
-         <InvestmentCard />
-         <InvestmentCard />
-         <InvestmentCard />
+        <section className={styles.investments}>
+          <InvestmentCard subscribe={subscribe} />
+          <InvestmentCard subscribe={subscribe} />
+          <InvestmentCard subscribe={subscribe} />
+          <InvestmentCard subscribe={subscribe} />
+          <InvestmentCard subscribe={subscribe} />
+          <InvestmentCard subscribe={subscribe} />
+          <InvestmentCard subscribe={subscribe} />
+          <InvestmentCard subscribe={subscribe} />
         </section>
       ) : (
         <section className={styles.comingSoon}>
@@ -103,7 +103,7 @@ const ProductsUI = () => {
     </>
   );
 };
-const InvestmentCard = () => {
+const InvestmentCard = ({ subscribe }) => {
   return (
     <div className={styles.investmentCard}>
       <img src={plantImg} alt="growing plant" />
@@ -118,7 +118,9 @@ const InvestmentCard = () => {
             <p className={styles.investmentCard__tag}>Estimated Yield</p>
           </div>
         </div>
-        <Button variant="outline-black">Subscribe</Button>
+        <Button onClick={subscribe} variant="outline-black">
+          Subscribe
+        </Button>
       </div>
     </div>
   );

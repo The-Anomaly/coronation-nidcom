@@ -25,8 +25,10 @@ import { ReactComponent as WalletAddIcon } from "./walletAddIcon.svg";
 import { ReactComponent as SendIcon } from "./sendIcon.svg";
 import { ReactComponent as EyeSlashIcon } from "./eyeSlashIcon.svg";
 import { ReactComponent as ArrowIcon } from "./arrowIcon.svg";
+import { ReactComponent as CloseIcon } from "./closeIcon.svg";
 
 export {
+  CloseIcon,
   ArrowIcon,
   EyeSlashIcon,
   SendIcon,
