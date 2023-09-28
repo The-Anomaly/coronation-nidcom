@@ -30,8 +30,10 @@ import { ReactComponent as InstagramIcon } from "./instagramIcon.svg";
 import { ReactComponent as TwitterIcon } from "./twitterIcon.svg";
 import { ReactComponent as LinkedinIcon } from "./linkedinIcon.svg";
 import { ReactComponent as FacebookIcon } from "./facebookIcon.svg";
+import { ReactComponent as CardIcon } from "./cardIcon.svg";
 
 export {
+  CardIcon,
   InstagramIcon,
   TwitterIcon,
   LinkedinIcon,
