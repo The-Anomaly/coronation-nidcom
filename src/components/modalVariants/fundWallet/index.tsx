@@ -70,7 +70,7 @@ const FundWallet = ({ show, close, submit }) => {
   });
 
   const onSubmit: SubmitHandler<FundWalletData> = (data) => {
-    submit(data);
+    submit(data.amount);
 
     const transactions: any[] = JSON.parse(
       localStorage.getItem("transactions") ?? ""

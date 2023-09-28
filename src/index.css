@@ -16,7 +16,7 @@
   --bg-50: #eceff3;
 
   /* Text colors */
-  --text-300: #A4ACB9;
+  --text-300: #a4acb9;
   --text-400: #818898;
   --text-500: #666d80;
   --text-600: #36394a;
@@ -115,5 +115,9 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   -webkit-box-shadow: 0px 0px 0px 1px rgba(9, 25, 72, 0.13),
-  0px 1px 2px 0px rgba(18, 55, 105, 0.08) white !important;
+    0px 1px 2px 0px rgba(18, 55, 105, 0.08) white !important;
+}
+
+input[type="checkbox"] {
+  accent-color: var(--bg-900);
 }

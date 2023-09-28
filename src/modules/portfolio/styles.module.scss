@@ -69,7 +69,7 @@
 
   &__ttl {
     font-size: 24px;
-    font-weight: 800;
+    font-weight: 700;
     margin-bottom: 1rem;
 
     span {
@@ -117,6 +117,7 @@
   border: 1px solid var(--border-hover-100, #dfe1e7);
   background: var(--background-white, #fff);
   padding: 1.5rem 2rem 0;
+  margin-bottom: 2rem;
 
   &__nav {
     color: var(--text-500);
@@ -293,3 +294,18 @@
     }
   }
 }
+
+.empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    padding: 5rem 1rem;
+  
+    p {
+      color: var(--text-500);
+      font-size: 12px;
+    }
+  }
+  

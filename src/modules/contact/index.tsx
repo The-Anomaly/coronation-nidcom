@@ -18,7 +18,28 @@ import {
   TwitterIcon,
 } from "assets";
 
-const subjectOptions: OptionType[] = [];
+const subjectOptions: OptionType[] = [
+  {
+    label: "Products",
+    value: "Products",
+  },
+  {
+    label: "Portfolio",
+    value: "Portfolio",
+  },
+  {
+    label: "Withdrawal",
+    value: "Withdrawal",
+  },
+  {
+    label: "Funding",
+    value: "Funding",
+  },
+  {
+    label: "Redeeming an investment",
+    value: "Redeeming an investment",
+  },
+];
 
 interface ContactFormData {
   subject: OptionType;
@@ -33,7 +54,6 @@ const initContactFormData: ContactFormData = {
 const schema = yup
   .object({
     subject: optionTypeSchemaReq,
-
     message: yup.string().required("Required"),
   })
   .required();
@@ -84,8 +104,15 @@ const ContactUI = () => {
               value={watch("message")}
               parentClassName={styles.inputWrap}
             />
-            <Button className={styles.form__btn} variant="fill-black">
-              Send <SendIcon />{" "}
+            <Button
+              disabled={
+                watch("message") === "" || watch("subject.value") === ""
+              }
+              onClick={handleSubmit(onSubmit)}
+              className={styles.form__btn}
+              variant="fill-black"
+            >
+              Send <SendIcon />
             </Button>
           </form>
         </div>

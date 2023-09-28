@@ -84,8 +84,8 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({
     },
   ];
 
-  const data = JSON.parse(localStorage.getItem("signupAgreement") ?? "");
-  const id = JSON.parse(localStorage.getItem("signupIdentity") ?? "");
+  const data = JSON.parse(localStorage.getItem("signupAgreement") ?? "{}");
+  const id = JSON.parse(localStorage.getItem("signupIdentity") ?? "{}");
   return (
     <>
       <header className={styles.header}>
@@ -111,7 +111,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({
         </section>
 
         <section className={styles.sidebar__profile}>
-          <span className={styles.sidebar__profile__avatar}>{data.firstName.charAt(0)}{data.lastName.charAt(0)}</span>{" "}
+          <span className={styles.sidebar__profile__avatar}>{data.firstName?.charAt(0)}{data.lastName?.charAt(0)}</span>{" "}
           <div>
             <p className={styles.sidebar__profile__name}>
               {data.firstName} {data.lastName}

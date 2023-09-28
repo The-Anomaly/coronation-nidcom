@@ -45,7 +45,7 @@ const Withdraw = ({ show, close, submit }) => {
   });
 
   const onSubmit: SubmitHandler<WithdrawData> = (data) => {
-    submit(data);
+    submit(data.amount);
 
     const transactions: any[] = JSON.parse(
       localStorage.getItem("transactions") ?? ""

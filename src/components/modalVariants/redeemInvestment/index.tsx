@@ -3,7 +3,7 @@ import styles from "./styles.module.scss";
 import { CloseIcon, plantImg } from "assets";
 import { Button } from "components";
 
-const RedeemInvestment = ({ show, close }) => {
+const RedeemInvestment = ({ show, close, redeem }) => {
   return (
     <Modal
       contentClassName={styles.modal}
@@ -60,7 +60,9 @@ const RedeemInvestment = ({ show, close }) => {
         market performance
       </p>
       <section className={styles.btnSec}>
-        <Button variant="fill-black">Redeem investment</Button>
+        <Button onClick={redeem} variant="fill-black">
+          Redeem investment
+        </Button>
       </section>
     </Modal>
   );

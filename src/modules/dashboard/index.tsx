@@ -13,13 +13,13 @@ import {
 } from "assets";
 
 const DashboardUI = ({ fund, portfolio, investing }) => {
-  const data = JSON.parse(localStorage.getItem("signupAgreement") ?? "");
+  const data = JSON.parse(localStorage.getItem("signupAgreement") ?? "{}");
 
-  const wallet = JSON.parse(localStorage.getItem("walletBalance") ?? "");
+  const wallet = JSON.parse(localStorage.getItem("walletBalance") ?? "0");
   const investment = JSON.parse(
-    localStorage.getItem("investmentBalance") ?? ""
+    localStorage.getItem("investmentBalance") ?? "0"
   );
-  const transactions = JSON.parse(localStorage.getItem("transactions") ?? "");
+  const transactions = JSON.parse(localStorage.getItem("transactions") ?? "[]");
 
   return (
     <>
@@ -38,9 +38,13 @@ const DashboardUI = ({ fund, portfolio, investing }) => {
             <p className={styles.amount}>
               <span style={{ fontWeight: "700" }}>₦</span> {investment}.
               <span style={{ fontSize: "80%" }}>00</span>
-              <span className={styles.arrow}>
-                <ArrowIcon /> 16.80 %
-              </span>
+              {investment > 0 ? (
+                <span className={styles.arrow}>
+                  <ArrowIcon /> 16.80 %
+                </span>
+              ) : (
+                ""
+              )}
             </p>
             <div className={styles.btns}>
               <Button onClick={investing} variant="fill-white">
@@ -108,6 +112,7 @@ const DashboardUI = ({ fund, portfolio, investing }) => {
             across traditional and alternative asset classes in line with our
             customers needs and risk appetites for both our institutional and
             individual customers`}
+            onClick={investing}
             />
             <ProductItem
               image={wheelImg}
@@ -136,7 +141,7 @@ interface TransactionItemProps {
   date: string;
   time: string;
   amount: string;
-  id: string;
+  reference: string;
 }
 
 const TransactionItem: React.FC<TransactionItemProps> = ({
@@ -144,7 +149,7 @@ const TransactionItem: React.FC<TransactionItemProps> = ({
   date,
   time,
   amount,
-  id,
+  reference,
 }) => {
   return (
     <div className={styles.transaction}>
@@ -161,7 +166,7 @@ const TransactionItem: React.FC<TransactionItemProps> = ({
       </div>
       <div className={styles.info2}>
         <p className={styles.info2__ttl}>₦ {amount}</p>
-        <p className={styles.info2__txt}>{id}</p>
+        <p className={styles.info2__txt}>{reference}</p>
       </div>
     </div>
   );
@@ -173,13 +178,14 @@ interface ProductItemProps {
   title: string;
   text: string;
   isComingSoon?: boolean;
+  onClick?: () => {}
 }
 const ProductItem: React.FC<ProductItemProps> = ({
   image,
   bg,
   title,
   text,
-  isComingSoon,
+  isComingSoon, onClick
 }) => {
   return (
     <>
@@ -198,7 +204,7 @@ const ProductItem: React.FC<ProductItemProps> = ({
           </p>
           <p className={styles.product__content__txt}>{text}</p>
         </div>
-        {!isComingSoon && <Button variant="outline">Invest</Button>}
+        {!isComingSoon && <Button onClick={onClick} variant="outline">Invest</Button>}
       </div>
     </>
   );

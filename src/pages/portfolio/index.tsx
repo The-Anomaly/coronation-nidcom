@@ -13,7 +13,16 @@ const Portfolio = () => {
 
   return (
     <>
-      <RedeemInvestment show={redeem} close={() => setRedeem(false)} />
+      <RedeemInvestment
+        redeem={() => {
+          setRedeem(false);
+          setSuccess(true);
+        }}
+        show={redeem}
+        close={() => {
+          setRedeem(false);
+        }}
+      />
       <SuccessModal
         show={success}
         close={() => setSuccess(false)}
@@ -26,7 +35,10 @@ const Portfolio = () => {
         btnText="Go to wallet"
         btntOnClick={() => navigate(Routes.wallet)}
       />
-      <PortfolioUI handleInvesting={handleInvesting} />
+      <PortfolioUI
+        redeem={() => setRedeem(true)}
+        handleInvesting={handleInvesting}
+      />
     </>
   );
 };

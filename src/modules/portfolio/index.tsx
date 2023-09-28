@@ -1,4 +1,4 @@
-import { ArrowIcon, CardIcon, SendIcon, plantImg } from "assets";
+import { ArrowIcon, CardIcon, SendIcon, emptyBoxImg, plantImg } from "assets";
 import styles from "./styles.module.scss";
 import { useState } from "react";
 import { Button } from "components";
@@ -77,7 +77,7 @@ const history: HistoryData[] = [
   },
 ];
 
-const PortfolioUI = ({ handleInvesting }) => {
+const PortfolioUI = ({ handleInvesting, redeem }) => {
   const [active, setActive] = useState(0);
   const tabs = [
     {
@@ -85,12 +85,15 @@ const PortfolioUI = ({ handleInvesting }) => {
     },
     { title: "History" },
   ];
+  const investment = JSON.parse(
+    localStorage.getItem("investmentBalance") ?? "0"
+  );
   return (
     <>
       <section className={styles.overviewWrap}>
         <section className={styles.overview}>
           <div className={styles.graphSec}>
-            <Chart />
+            <Chart investment={investment} />
             <div className={styles.legend}>
               <p className={styles.color1}>Mutual funds 25%</p>
               <p className={styles.color2}>Equity 35%</p>
@@ -101,10 +104,14 @@ const PortfolioUI = ({ handleInvesting }) => {
           <div className={styles.info}>
             <p className={styles.info__tag}>Investment balance</p>
             <p className={styles.info__ttl}>
-              ₦ 400,000,000.00
-              <span>
-                <ArrowIcon /> 16.80 %
-              </span>
+              ₦ {investment}
+              {investment > 0 ? (
+                <span>
+                  <ArrowIcon /> 16.80 %
+                </span>
+              ) : (
+                ""
+              )}
             </p>
             <Button
               onClick={handleInvesting}
@@ -128,32 +135,43 @@ const PortfolioUI = ({ handleInvesting }) => {
             </span>
           ))}
         </div>
-        {active === 0 ? (
-          <>
-            <div className={styles.table__heading}>
-              <span>Name</span>
-              <span>Type</span>
-              <span>Amount</span>
-              <span>Growth</span>
-              <span></span>
-            </div>
-            {subscriptions.map((item, index) => (
-              <SubscriptionItem key={`subscription_${index}`} {...item} />
-            ))}
-          </>
+        {investment > 0 ? (
+          active === 0 ? (
+            <>
+              <div className={styles.table__heading}>
+                <span>Name</span>
+                <span>Type</span>
+                <span>Amount</span>
+                <span>Growth</span>
+                <span></span>
+              </div>
+              {subscriptions.map((item, index) => (
+                <SubscriptionItem
+                  redeem={redeem}
+                  key={`subscription_${index}`}
+                  {...item}
+                />
+              ))}
+            </>
+          ) : (
+            <>
+              <div className={styles.history__heading}>
+                <span>Name</span>
+                <span>Type</span>
+                <span>Amount</span>
+                <span>Growth</span>
+                <span>Date Redeemed</span>
+              </div>
+              {history.map((item, index) => (
+                <HistoryItem key={`history_${index}`} {...item} />
+              ))}
+            </>
+          )
         ) : (
-          <>
-            <div className={styles.history__heading}>
-              <span>Name</span>
-              <span>Type</span>
-              <span>Amount</span>
-              <span>Growth</span>
-              <span>Date Redeemed</span>
-            </div>
-            {history.map((item, index) => (
-              <HistoryItem key={`history_${index}`} {...item} />
-            ))}
-          </>
+          <div className={styles.empty}>
+            <img src={emptyBoxImg} alt="empty box" />
+            <p>You don't have any subscriptions</p>
+          </div>
         )}
       </section>
     </>
@@ -201,12 +219,17 @@ interface SubscriptionData {
   growthRate: "positive" | "negative";
 }
 
-const SubscriptionItem: React.FC<SubscriptionData> = ({
+interface SubscriptionProps extends SubscriptionData {
+  redeem: () => void;
+}
+
+const SubscriptionItem: React.FC<SubscriptionProps> = ({
   title,
   type,
   amount,
   growth,
   growthRate,
+  redeem,
 }) => {
   return (
     <div className={styles.table__item}>
@@ -220,23 +243,23 @@ const SubscriptionItem: React.FC<SubscriptionData> = ({
         <span className={styles[growthRate]}>{growth}</span>
       </span>
       <span className={styles.table__item__redeem}>
-        <button>Redeem</button>
+        <button onClick={redeem}>Redeem</button>
       </span>
     </div>
   );
 };
 
-const Chart = () => {
+const Chart = ({ investment }) => {
+  const colors =
+    investment > 0 ? ["#7F56D9", "#9E77ED", "#B692F6", "#F4EBFF"] : ["#f0f0f2"];
   const chartData: ChartData<"doughnut"> = {
-    labels: ["Complete", "Incomplete"],
     datasets: [
       {
-        label: "Property Status",
-        data: [25, 35, 30, 10],
-        backgroundColor: ["#7F56D9", "#9E77ED", "#B692F6", "#F4EBFF"],
-        hoverBackgroundColor: ["#7F56D9", "#9E77ED", "#B692F6", "#F4EBFF"],
-        borderColor: ["#7F56D9", "#9E77ED", "#B692F6", "#F4EBFF"],
-        hoverBorderColor: ["#7F56D9", "#9E77ED", "#B692F6", "#F4EBFF"],
+        data: investment > 0 ? [25, 35, 30, 10] : [100],
+        backgroundColor: colors,
+        hoverBackgroundColor: colors,
+        borderColor: colors,
+        hoverBorderColor: colors,
         hoverOffset: 0,
         borderAlign: "inner",
       },
