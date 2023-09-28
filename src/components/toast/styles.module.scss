@@ -31,6 +31,9 @@
   min-width: 400px;
   position: relative;
   font-size: 13px;
+  display: grid;
+  grid-template-columns: 24px 1fr 24px;
+  gap: 6px;
 }
 .close {
   position: absolute;

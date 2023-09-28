@@ -11,11 +11,12 @@ import {
   initOptionType,
   optionTypeSchemaReq,
 } from "components";
-import { Chevron, TickCircle } from "assets";
+import { CloudIcon, TickCircle } from "assets";
 import { employmentOptions, genderOptions } from "./options";
 import { useEffect } from "react";
 
 interface ProfileFormData {
+  avatar: FileList | any;
   gender: OptionType;
   dateOfBirth: string;
   mothersMaidenName: string;
@@ -32,6 +33,7 @@ interface ProfileFormData {
 }
 
 const initProfileFormData: ProfileFormData = {
+  avatar: null,
   gender: initOptionType,
   dateOfBirth: "",
   country: initOptionType,
@@ -49,6 +51,7 @@ const initProfileFormData: ProfileFormData = {
 
 const schema = yup
   .object({
+    avatar: yup.mixed().required("Required"),
     gender: optionTypeSchemaReq,
     country: optionTypeSchemaReq,
     state: optionTypeSchemaReq,
@@ -91,7 +94,7 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ submit, countries }) => {
     const storageData = localStorage.getItem("signupProfile");
     if (storageData) {
       const data = JSON.parse(storageData);
-      reset(data);
+      reset({ ...data, avatar: null });
     }
   }, []);
 
@@ -102,6 +105,29 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ submit, countries }) => {
   return (
     <>
       <form className={styles.form}>
+        <div className={styles.fileWrap}>
+          <p className={styles.fileWrap__label}>BO</p>
+          <label className={styles.fileWrap__inputLabel} htmlFor="avatar">
+            <CloudIcon />
+            <p className={watch("avatar") !== null ? styles.uploaded : ""}>
+              <span>Click to upload.</span> or drag and drop
+            </p>
+            <span>SVG, PNG, JPG or GIF (max. 800x400px)</span>
+          </label>
+          <Input
+            label=""
+            placeholder=""
+            type="file"
+            required
+            validatorMessage={errors.avatar?.message?.toString()}
+            name="avatar"
+            register={register}
+            accept=".pdf, .png, .jpg, .jpeg"
+            className={styles.fileWrap__input}
+            id={"avatar"}
+            parentClassName={styles.noMargin}
+          />
+        </div>
         <Select
           label="Gender"
           placeholder="Select gender"

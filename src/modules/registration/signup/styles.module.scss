@@ -28,6 +28,7 @@
   white-space: nowrap;
   overflow: auto;
   overflow-y: hidden;
+  padding-bottom: 1px;
 
   span {
     display: flex;
@@ -56,5 +57,12 @@
         stroke: var(--bg-900);
       }
     }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .nav {
+    padding-left: 0;
+    padding-right: 0;
   }
 }

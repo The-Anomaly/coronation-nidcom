@@ -46,8 +46,7 @@ const schema = yup
     accountType: optionTypeSchemaReq,
     swiftCode: yup
       .string()
-      .required("Required")
-      .matches(/[0-9]/, "Only digits are allowed"),
+      .required("Required"),
     branchName: yup.string().required("Required"),
     bankName: yup.string().required("Required"),
     branchAddress: yup.string().required("Required"),
@@ -57,8 +56,7 @@ const schema = yup
       .matches(/[0-9]/, "Only digits are allowed"),
     accountNo: yup
       .string()
-      .required("Required")
-      .matches(/[0-9]/, "Only digits are allowed"),
+      .required("Required"),
     accountName: yup.string().required("Required"),
     routingNumber: yup
       .string()
@@ -103,7 +101,7 @@ const BankForm: React.FC<BankFormProps> = ({ submit, previous }) => {
         <Input
           label="SWIFT code"
           placeholder="Enter SWIFT code"
-          type="number"
+          type="text"
           required
           validatorMessage={errors.swiftCode?.message}
           name="swiftCode"
@@ -123,7 +121,7 @@ const BankForm: React.FC<BankFormProps> = ({ submit, previous }) => {
         <Input
           label="Account/IBAN number"
           placeholder="Enter account/IBAN number"
-          type="number"
+          type="text"
           required
           validatorMessage={errors.accountNo?.message}
           name="accountNo"
@@ -167,7 +165,7 @@ const BankForm: React.FC<BankFormProps> = ({ submit, previous }) => {
 
         <Select
           label="Account type"
-          placeholder="Select country"
+          placeholder="Select type"
           required
           validatorMessage={errors.accountType?.value?.message?.toString()}
           value={watch("accountType")}
@@ -177,7 +175,7 @@ const BankForm: React.FC<BankFormProps> = ({ submit, previous }) => {
         />
         <Select
           label="Account currency"
-          placeholder="Select country"
+          placeholder="Select currency"
           required
           validatorMessage={errors.accountCurrency?.value?.message?.toString()}
           value={watch("accountCurrency")}

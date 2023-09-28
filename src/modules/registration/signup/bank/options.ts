@@ -24,4 +24,8 @@ export const accountCurrencyOptions: OptionType[] = [
     label: "GBP",
     value: "GBP",
   },
+  {
+    label: "NGN",
+    value: "NGN",
+  },
 ];

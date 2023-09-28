@@ -100,7 +100,7 @@ const IdentityForm: React.FC<IdentityFormProps> = ({
         <Input
           label="ID number"
           placeholder="Enter ID number"
-          type="number"
+          type="text"
           required
           validatorMessage={errors.idNo?.message}
           name="idNo"

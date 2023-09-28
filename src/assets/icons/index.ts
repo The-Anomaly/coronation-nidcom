@@ -34,8 +34,10 @@ import { ReactComponent as CardIcon } from "./cardIcon.svg";
 import { ReactComponent as AlertCircleIcon } from "./alertCircleIcon.svg";
 import { ReactComponent as CardsIcon } from "./cardsIcon.svg";
 import { ReactComponent as CopyIcon } from "./copyIcon.svg";
+import { ReactComponent as TickCircle2 } from "./tickCircle2.svg";
 
 export {
+  TickCircle2,
   CopyIcon,
   CardsIcon,
   AlertCircleIcon,
