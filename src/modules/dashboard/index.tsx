@@ -50,7 +50,7 @@ const DashboardUI = () => {
             </p>
             <div className={styles.btns}>
               <Button variant="outline">
-                Top up balance <WalletAddIcon />
+                Fund wallet <WalletAddIcon />
               </Button>
             </div>
           </div>
