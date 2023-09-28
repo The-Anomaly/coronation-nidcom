@@ -3,7 +3,7 @@ import styles from "./styles.module.scss";
 
 interface ButtonProps
   extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
-  variant: "fill-black" | "outline" | "fill-white"
+  variant: "fill-black" | "outline" | "fill-white" | "outline-black"
 }
 
 const Button = (props: ButtonProps) => {

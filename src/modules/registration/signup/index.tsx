@@ -148,8 +148,7 @@ const SignupUI = () => {
           {tabs.map(({ icon, text, isComplete }, index) => (
             <span
               role="button"
-              // onClick={() => setActive((prev) => (isComplete ? index : prev))}
-              onClick={() => setActive(index)}
+              onClick={() => setActive((prev) => (isComplete ? index : prev))}
               className={
                 active === index
                   ? styles.active

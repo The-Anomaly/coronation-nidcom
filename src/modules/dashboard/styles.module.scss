@@ -1,5 +1,7 @@
 .heading {
+  padding-top: 2rem;
   margin-bottom: 2rem;
+
   &__ttl {
     font-weight: 800;
     margin-bottom: 8px;
@@ -10,10 +12,13 @@
     font-size: 13px;
   }
 }
-
+.subHeading {
+  padding-top: 0;
+}
 .body {
   display: grid;
   grid-template-columns: 5fr 2.7fr;
+  margin-bottom: 3rem;
   gap: 1.5rem;
 }
 

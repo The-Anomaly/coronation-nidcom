@@ -22,4 +22,9 @@
     background: transparent;
     border-color: var(--gray-300);
   }
+  &__outline-black {
+    color: var(--gray-700);
+    background: transparent;
+    border-color: var(--bg-900);
+  }
 }
