@@ -21,8 +21,16 @@ import { ReactComponent as ChartIconFill } from "./chartIconFill.svg";
 import { ReactComponent as SettingsIconFill } from "./settingsIconFill.svg";
 import { ReactComponent as WalletIconFill } from "./walletIconFill.svg";
 import { ReactComponent as MessagesIconFill } from "./messagesIconFill.svg";
+import { ReactComponent as WalletAddIcon } from "./walletAddIcon.svg";
+import { ReactComponent as SendIcon } from "./sendIcon.svg";
+import { ReactComponent as EyeSlashIcon } from "./eyeSlashIcon.svg";
+import { ReactComponent as ArrowIcon } from "./arrowIcon.svg";
 
 export {
+  ArrowIcon,
+  EyeSlashIcon,
+  SendIcon,
+  WalletAddIcon,
   BasketIconFill,
   BriefCaseIconFill,
   ChartIconFill,

@@ -115,7 +115,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({
           </div>
         </section>
       </aside>
-      {children}
+      <section className={styles.body}>{children}</section>
     </>
   );
 };
