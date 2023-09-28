@@ -1,10 +1,13 @@
 import {
+  Contact,
   Dashboard,
   ForgotPassword,
   Login,
+  Portfolio,
   Products,
   Profile,
   Signup,
+  Wallet,
 } from "pages";
 import { PathRouteProps } from "react-router-dom";
 import { Routes } from "./routes";
@@ -71,6 +74,33 @@ export const RouteBuilder: RouteBuilderItem[] = [
     props: {
       page: "profile",
       title: "Profile management",
+    },
+  },
+  {
+    path: Routes.contact,
+    Element: Contact,
+    Layout: DashboardLayout,
+    props: {
+      page: "contact",
+      title: "Contact us",
+    },
+  },
+  {
+    path: Routes.wallet,
+    Element: Wallet,
+    Layout: DashboardLayout,
+    props: {
+      page: "wallet",
+      title: "Wallet",
+    },
+  },
+  {
+    path: Routes.portfolio,
+    Element: Portfolio,
+    Layout: DashboardLayout,
+    props: {
+      page: "portfolio",
+      title: "Portfolio",
     },
   },
   {

@@ -26,8 +26,16 @@ import { ReactComponent as SendIcon } from "./sendIcon.svg";
 import { ReactComponent as EyeSlashIcon } from "./eyeSlashIcon.svg";
 import { ReactComponent as ArrowIcon } from "./arrowIcon.svg";
 import { ReactComponent as CloseIcon } from "./closeIcon.svg";
+import { ReactComponent as InstagramIcon } from "./instagramIcon.svg";
+import { ReactComponent as TwitterIcon } from "./twitterIcon.svg";
+import { ReactComponent as LinkedinIcon } from "./linkedinIcon.svg";
+import { ReactComponent as FacebookIcon } from "./facebookIcon.svg";
 
 export {
+  InstagramIcon,
+  TwitterIcon,
+  LinkedinIcon,
+  FacebookIcon,
   CloseIcon,
   ArrowIcon,
   EyeSlashIcon,
