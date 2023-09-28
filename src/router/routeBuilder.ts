@@ -1,4 +1,11 @@
-import { Dashboard, ForgotPassword, Login, Products, Signup } from "pages";
+import {
+  Dashboard,
+  ForgotPassword,
+  Login,
+  Products,
+  Profile,
+  Signup,
+} from "pages";
 import { PathRouteProps } from "react-router-dom";
 import { Routes } from "./routes";
 import { AuthLayout, DashboardLayout } from "layout";
@@ -45,8 +52,8 @@ export const RouteBuilder: RouteBuilderItem[] = [
     Layout: DashboardLayout,
     props: {
       page: "dashboard",
-      title: "Dashboard"
-    }
+      title: "Dashboard",
+    },
   },
   {
     path: Routes.products,
@@ -54,8 +61,17 @@ export const RouteBuilder: RouteBuilderItem[] = [
     Layout: DashboardLayout,
     props: {
       page: "products",
-      title: "Products"
-    }
+      title: "Products",
+    },
+  },
+  {
+    path: Routes.profile,
+    Element: Profile,
+    Layout: DashboardLayout,
+    props: {
+      page: "profile",
+      title: "Profile management",
+    },
   },
   {
     path: "*",

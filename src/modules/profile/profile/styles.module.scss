@@ -1,0 +1,44 @@
+.form {
+  max-width: 534px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.halfInput {
+  width: 48%;
+}
+.btnWrap {
+  padding-bottom: 3rem;
+  
+  > div {
+    max-width: 534px;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 2rem;
+
+    button {
+      margin-left: 12px;
+      display: flex;
+      align-items: center;
+
+      svg {
+        margin-left: 10px;
+
+        path {
+          stroke: var(--white);
+          fill: transparent;
+        }
+      }
+
+      &.previous svg {
+        transform: rotate(90deg);
+        margin-left: 0;
+        margin-right: 10px;
+
+        path {
+          stroke: var(--bg-900);
+        }
+      }
+    }
+  }
+}

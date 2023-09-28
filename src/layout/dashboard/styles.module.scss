@@ -6,6 +6,7 @@
   width: calc(100% - 240px);
   top: 0;
   background: var(--white);
+  z-index: 3;
 
   p {
     font-size: 20px;
