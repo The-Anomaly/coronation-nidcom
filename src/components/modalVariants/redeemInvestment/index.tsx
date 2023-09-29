@@ -1,7 +1,7 @@
 import { Modal } from "components/modal";
 import styles from "./styles.module.scss";
 import { CloseIcon, plantImg } from "assets";
-import { Button } from "components";
+import { Button, FormatMoney } from "components";
 
 const RedeemInvestment = ({ show, close, redeem }) => {
   return (
@@ -28,7 +28,9 @@ const RedeemInvestment = ({ show, close, redeem }) => {
       <section className={styles.sec3}>
         <div>
           <p>Investment amount</p>
-          <p>₦ 20,072.00</p>
+          <p>
+            <FormatMoney amount={20072} />{" "}
+          </p>
         </div>
         <p className={styles.note}>
           0.5 for pre-maturity withdrawal applies on income earned
@@ -41,7 +43,9 @@ const RedeemInvestment = ({ show, close, redeem }) => {
         </div>
         <div>
           <p>Minimum deposit</p>
-          <p>₦ 10,000.00</p>
+          <p>
+            <FormatMoney amount={10000} />
+          </p>
         </div>
         <div>
           <p>Tenure</p>

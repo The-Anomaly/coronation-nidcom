@@ -62,8 +62,6 @@ const FundWallet = ({ show, close, submit }) => {
     handleSubmit,
     formState: { errors },
     watch,
-    setValue,
-    reset,
   } = useForm<FundWalletData>({
     resolver: yupResolver(schema),
     defaultValues: initFundWalletData,

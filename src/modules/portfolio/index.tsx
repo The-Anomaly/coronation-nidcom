@@ -1,7 +1,7 @@
 import { ArrowIcon, CardIcon, SendIcon, emptyBoxImg, plantImg } from "assets";
 import styles from "./styles.module.scss";
 import { useState } from "react";
-import { Button } from "components";
+import { Button, FormatMoney } from "components";
 import {
   Chart as ChartJS,
   ArcElement,
@@ -30,21 +30,21 @@ const subscriptions: SubscriptionData[] = [
   {
     title: "Coronation money market fund",
     type: "Asset management",
-    amount: "₦ 400,000.00",
+    amount: 400000,
     growth: "+ 8.24%",
     growthRate: "positive",
   },
   {
     title: "Coronation fixed income fund",
     type: "Asset management",
-    amount: "₦ 120,000.00",
+    amount: 120000,
     growth: "- 3.56%",
     growthRate: "negative",
   },
   {
     title: "Coronation balanced fund",
     type: "Asset management",
-    amount: "₦ 540,000.00",
+    amount: 540000,
     growth: "+ 8.24%",
     growthRate: "positive",
   },
@@ -54,7 +54,7 @@ const history: HistoryData[] = [
   {
     title: "Coronation money market fund",
     type: "Asset management",
-    amount: "₦ 400,000.00",
+    amount: 400000,
     growth: "+ 8.24%",
     growthRate: "positive",
     date: "12 Apr, 2024",
@@ -62,7 +62,7 @@ const history: HistoryData[] = [
   {
     title: "Coronation fixed income fund",
     type: "Asset management",
-    amount: "₦ 120,000.00",
+    amount: 120000,
     growth: "- 3.56%",
     growthRate: "negative",
     date: "22 Sept, 2023",
@@ -70,7 +70,7 @@ const history: HistoryData[] = [
   {
     title: "Coronation balanced fund",
     type: "Asset management",
-    amount: "₦ 540,000.00",
+    amount: 540000,
     growth: "+ 8.24%",
     growthRate: "positive",
     date: "11 Sept, 2024",
@@ -104,9 +104,9 @@ const PortfolioUI = ({ handleInvesting, redeem }) => {
           <div className={styles.info}>
             <p className={styles.info__tag}>Investment balance</p>
             <p className={styles.info__ttl}>
-              ₦ {investment}
+              <FormatMoney amount={investment} />
               {investment > 0 ? (
-                <span>
+                <span className={styles.info__ttl__growth} >
                   <ArrowIcon /> 16.80 %
                 </span>
               ) : (
@@ -181,7 +181,7 @@ const PortfolioUI = ({ handleInvesting, redeem }) => {
 interface HistoryData {
   title: string;
   type: string;
-  amount: string;
+  amount: number;
   growth: string;
   growthRate: "positive" | "negative";
   date: string;
@@ -202,7 +202,9 @@ const HistoryItem: React.FC<HistoryData> = ({
         <p>{title}</p>
       </span>
       <span className={styles.history__item__type}>{type}</span>
-      <span className={styles.history__item__amount}>{amount}</span>
+      <span className={styles.history__item__amount}>
+        <FormatMoney amount={amount} />
+      </span>
       <span className={styles.history__item__growth}>
         <span className={styles[growthRate]}>{growth}</span>
       </span>
@@ -214,7 +216,7 @@ const HistoryItem: React.FC<HistoryData> = ({
 interface SubscriptionData {
   title: string;
   type: string;
-  amount: string;
+  amount: number;
   growth: string;
   growthRate: "positive" | "negative";
 }
@@ -238,7 +240,9 @@ const SubscriptionItem: React.FC<SubscriptionProps> = ({
         <p>{title}</p>
       </span>
       <span className={styles.table__item__type}>{type}</span>
-      <span className={styles.table__item__amount}>{amount}</span>
+      <span className={styles.table__item__amount}>
+        <FormatMoney amount={amount} />
+      </span>
       <span className={styles.table__item__growth}>
         <span className={styles[growthRate]}>{growth}</span>
       </span>

@@ -1,5 +1,6 @@
 import { ArrowIcon, emptyBoxImg, moneyImg2, withdrawImg } from "assets";
 import styles from "./styles.module.scss";
+import { FormatMoney } from "components";
 
 interface TransactionData {
   type: "deposit" | "withdrawal" | "investment";
@@ -20,7 +21,9 @@ const WalletUI = ({ fund, withdraw }) => {
       <section className={styles.heading}>
         <div className={styles.balance}>
           <p>Wallet balance</p>
-          <p>₦ {wallet}</p>
+          <p>
+            <FormatMoney amount={wallet} />
+          </p>
         </div>
         <div onClick={fund} role="button" className={styles.fund}>
           <img src={moneyImg2} />
@@ -59,12 +62,12 @@ const WalletUI = ({ fund, withdraw }) => {
                   <p>
                     Your wallet was{" "}
                     {item.type === "deposit" ? "credited with" : "debited of"}{" "}
-                    <span>₦ {item.amount}</span>{" "}
+                    <FormatMoney amount={item.amount} />{" "}
                   </p>
                 </div>
               </span>
               <span className={styles.table__item__amount}>
-                ₦ {item.amount}
+                <FormatMoney amount={item.amount} />
               </span>
               <span className={styles.table__item__date}>
                 <span>{item.date}</span>

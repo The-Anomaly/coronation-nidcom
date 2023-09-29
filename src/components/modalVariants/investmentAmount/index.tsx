@@ -1,7 +1,7 @@
 import { Modal } from "components/modal";
 import styles from "./styles.module.scss";
 import { AlertCircleIcon, CloseIcon, plantImg } from "assets";
-import { Button } from "components";
+import { Button, FormatMoney } from "components";
 import { useState } from "react";
 
 const InvestmentAmount = ({ show, close, back, complete }) => {
@@ -85,7 +85,7 @@ const InvestmentAmount = ({ show, close, back, complete }) => {
           <div className={styles.inputWrap__info}>
             {error !== "" ? <p className={styles.error}>{error}</p> : ""}
             <p className={styles.hint}>
-              Wallet balance: <span>₦ {balance}</span>
+              Wallet balance: <FormatMoney amount={balance} />
             </p>
           </div>
         </label>
@@ -108,7 +108,7 @@ const InvestmentAmount = ({ show, close, back, complete }) => {
           Back
         </Button>
         <Button disabled={value === ""} onClick={onSubmit} variant="fill-black">
-          Complete purchase
+          {insufficient ? "Top up" : " Complete purchase"}
         </Button>
       </section>
     </Modal>

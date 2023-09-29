@@ -1,7 +1,7 @@
 import { Modal } from "components/modal";
 import styles from "./styles.module.scss";
 import { CloseIcon, plantImg } from "assets";
-import { Button } from "components";
+import { Button, FormatMoney } from "components";
 
 const InvestmentInfo = ({ show, close, submit }) => {
   return (
@@ -32,7 +32,7 @@ const InvestmentInfo = ({ show, close, submit }) => {
         </div>
         <div>
           <p>Minimum deposit</p>
-          <p>₦ 10,000.00</p>
+          <p><FormatMoney amount={10000} /></p>
         </div>
         <div>
           <p>Tenure</p>

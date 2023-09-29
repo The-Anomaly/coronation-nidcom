@@ -1,4 +1,4 @@
-import { Button } from "components";
+import { Button, FormatMoney } from "components";
 import styles from "./styles.module.scss";
 import {
   ArrowIcon,
@@ -36,8 +36,8 @@ const DashboardUI = ({ fund, portfolio, investing }) => {
               Investment balance <EyeSlashIcon />{" "}
             </p>
             <p className={styles.amount}>
-              <span style={{ fontWeight: "700" }}>₦</span> {investment}.
-              <span style={{ fontSize: "80%" }}>00</span>
+              <FormatMoney amount={investment} />
+
               {investment > 0 ? (
                 <span className={styles.arrow}>
                   <ArrowIcon /> 16.80 %
@@ -62,8 +62,7 @@ const DashboardUI = ({ fund, portfolio, investing }) => {
           <div className={`${styles.card} ${styles.card2}`}>
             <p className={styles.tag}>Wallet balance</p>
             <p className={styles.amount}>
-              <span style={{ fontWeight: "700" }}>₦</span> {wallet}.
-              <span style={{ fontSize: "80%" }}>00</span>
+              <FormatMoney amount={wallet} />
             </p>
             <div className={styles.btns}>
               <Button onClick={fund} variant="outline">
@@ -112,7 +111,7 @@ const DashboardUI = ({ fund, portfolio, investing }) => {
             across traditional and alternative asset classes in line with our
             customers needs and risk appetites for both our institutional and
             individual customers`}
-            onClick={investing}
+              onClick={investing}
             />
             <ProductItem
               image={wheelImg}
@@ -165,7 +164,9 @@ const TransactionItem: React.FC<TransactionItemProps> = ({
         </p>
       </div>
       <div className={styles.info2}>
-        <p className={styles.info2__ttl}>₦ {amount}</p>
+        <p className={styles.info2__ttl}>
+          <FormatMoney amount={amount} />
+        </p>
         <p className={styles.info2__txt}>{reference}</p>
       </div>
     </div>
@@ -178,14 +179,15 @@ interface ProductItemProps {
   title: string;
   text: string;
   isComingSoon?: boolean;
-  onClick?: () => {}
+  onClick?: () => {};
 }
 const ProductItem: React.FC<ProductItemProps> = ({
   image,
   bg,
   title,
   text,
-  isComingSoon, onClick
+  isComingSoon,
+  onClick,
 }) => {
   return (
     <>
@@ -204,7 +206,11 @@ const ProductItem: React.FC<ProductItemProps> = ({
           </p>
           <p className={styles.product__content__txt}>{text}</p>
         </div>
-        {!isComingSoon && <Button onClick={onClick} variant="outline">Invest</Button>}
+        {!isComingSoon && (
+          <Button onClick={onClick} variant="outline">
+            Invest
+          </Button>
+        )}
       </div>
     </>
   );
