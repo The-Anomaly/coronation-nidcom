@@ -1,4 +1,4 @@
-import { Toast, FundWallet, ToastData } from "components";
+import { Toast, FundWallet, ToastData, FormatMoney } from "components";
 import { DashboardUI } from "modules";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -16,6 +16,7 @@ const Dashboard = () => {
 
   const portfolio = () => navigate(Routes.portfolio);
   const products = () => navigate(Routes.products);
+  const viewWallet = () => navigate(Routes.wallet);
 
   return (
     <>
@@ -28,7 +29,11 @@ const Dashboard = () => {
           setToast((prev) => ({
             show: true,
             title: "Top up was successful",
-            text: `Your wallet was credited with N ${amount}!`,
+            text: (
+              <>
+                Your wallet was credited with <FormatMoney amount={amount} />!
+              </>
+            ),
             type: "success",
           }));
           setFund(false);
@@ -40,6 +45,7 @@ const Dashboard = () => {
         investing={products}
         fund={() => setFund(true)}
         portfolio={portfolio}
+        viewWallet={viewWallet}
       />
     </>
   );

@@ -37,14 +37,23 @@ const Withdraw = ({ show, close, submit }) => {
     handleSubmit,
     formState: { errors },
     watch,
-    setValue,
+    setError,
     reset,
   } = useForm<WithdrawData>({
     resolver: yupResolver(schema),
     defaultValues: initWithdrawData,
   });
 
+  const wallet = parseFloat(
+    JSON.parse(localStorage.getItem("walletBalance") ?? "0")
+  );
+
   const onSubmit: SubmitHandler<WithdrawData> = (data) => {
+    if (parseFloat(data.amount) > wallet) {
+      setError("amount", { message: "Insufficient balance" });
+      return;
+    }
+
     submit(data.amount);
 
     const transactions: any[] = JSON.parse(
@@ -60,10 +69,15 @@ const Withdraw = ({ show, close, submit }) => {
     };
 
     transactions.unshift(transaction);
-    localStorage.setItem("transactions", JSON.stringify(transactions))
+    localStorage.setItem("transactions", JSON.stringify(transactions));
 
-    const prevBalance = parseFloat(localStorage.getItem("walletBalance") ?? "0") 
-    localStorage.setItem("walletBalance", `${prevBalance - parseFloat(data.amount)}`);
+    const prevBalance = parseFloat(
+      localStorage.getItem("walletBalance") ?? "0"
+    );
+    localStorage.setItem(
+      "walletBalance",
+      `${prevBalance - parseFloat(data.amount)}`
+    );
   };
 
   return (

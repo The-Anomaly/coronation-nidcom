@@ -1,4 +1,5 @@
 import {
+  FormatMoney,
   FundWallet,
   SuccessModal,
   Toast,
@@ -41,7 +42,7 @@ const Wallet = () => {
           setToast({
             show: true,
             title: "Top up was successful",
-            text: `Your wallet was credited with N ${amount}!`,
+            text: <>Your wallet was credited with <FormatMoney amount={amount} />!</>,
             type: "success",
           });
           setFund(false);

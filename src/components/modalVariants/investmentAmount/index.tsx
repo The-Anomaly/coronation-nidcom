@@ -4,7 +4,7 @@ import { AlertCircleIcon, CloseIcon, plantImg } from "assets";
 import { Button, FormatMoney } from "components";
 import { useState } from "react";
 
-const InvestmentAmount = ({ show, close, back, complete }) => {
+const InvestmentAmount = ({ show, close, back, complete, fund }) => {
   const [error, setError] = useState("");
   const [insufficient, setInsufficient] = useState(false);
   const [value, setValue] = useState("");
@@ -14,6 +14,10 @@ const InvestmentAmount = ({ show, close, back, complete }) => {
   const limit = 10000;
 
   const onSubmit = () => {
+    if (insufficient) {
+      setInsufficient(false)
+      return fund();
+    }
     if (parseFloat(value) < limit) {
       setInsufficient(false);
       return setError("Minimum investment is ₦ 10,000");

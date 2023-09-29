@@ -12,7 +12,7 @@ import {
   wheelImg,
 } from "assets";
 
-const DashboardUI = ({ fund, portfolio, investing }) => {
+const DashboardUI = ({ fund, portfolio, investing, viewWallet }) => {
   const data = JSON.parse(localStorage.getItem("signupAgreement") ?? "{}");
 
   const wallet = JSON.parse(localStorage.getItem("walletBalance") ?? "0");
@@ -85,7 +85,9 @@ const DashboardUI = ({ fund, portfolio, investing }) => {
               ))}
 
               {transactions.length > 8 && (
-                <button className={styles.viewAll}>View all</button>
+                <button onClick={viewWallet} className={styles.viewAll}>
+                  View all
+                </button>
               )}
             </>
           ) : (

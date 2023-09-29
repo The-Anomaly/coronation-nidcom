@@ -6,7 +6,7 @@ import { AlertCircleIcon, CloseIcon, TickCircle2 } from "assets";
 export interface ToastData {
   show: boolean;
   title: string;
-  text: string;
+  text: string | any;
   type: "error" | "success";
 }
 

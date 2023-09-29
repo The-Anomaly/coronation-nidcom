@@ -6,7 +6,7 @@ const FormatMoney = ({ amount }) => {
     <span>
       <span style={{ fontWeight: "700" }}>₦</span>{" "}
       {lhs}
-      <span style={{ fontSize: "80%" }}>.{!rhs ? "00" : rhs}</span>
+      <span style={{ fontSize: "85%" }}>.{!rhs ? "00" : rhs}</span>
     </span>
   );
 };
