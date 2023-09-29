@@ -8,6 +8,8 @@
 }
 
 :root {
+  --max-width: 1200px;
+
   --white: #fff;
 
   /* Backgrounds colors */
@@ -72,7 +74,8 @@ textarea {
 }
 
 button,
-[role="button"] {
+[role="button"],
+[role="link"] {
   cursor: pointer;
 }
 

@@ -6,3 +6,4 @@ export * from "./profile"
 export * from "./contact"
 export * from "./portfolio"
 export * from "./wallet"
+export * from "./home";

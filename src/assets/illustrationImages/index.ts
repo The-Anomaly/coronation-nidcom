@@ -9,8 +9,14 @@ import moneyImg2 from "./moneyImg2.png";
 import withdrawImg from "./withdrawImg.png";
 import successImg2 from "./successImg2.png";
 import emptyBoxImg from "./emptyBoxImg.png";
+import product1Img from "./product1Img.png";
+import product2Img from "./product2Img.png";
+import product3Img from "./product3Img.png";
 
 export {
+  product1Img,
+  product2Img,
+  product3Img,
   emptyBoxImg,
   successImg2,
   moneyImg2,

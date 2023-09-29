@@ -2,6 +2,7 @@ import {
   Contact,
   Dashboard,
   ForgotPassword,
+  Home,
   Login,
   Portfolio,
   Products,
@@ -36,6 +37,14 @@ export interface RouteBuilderItem extends PathRouteProps {
 export const RouteBuilder: RouteBuilderItem[] = [
   {
     path: Routes.home,
+    Element: Home,
+    Layout: AuthLayout,
+    props: {
+      isHome: true
+    }
+  },
+  {
+    path: Routes.signup,
     Element: Signup,
     Layout: AuthLayout,
   },

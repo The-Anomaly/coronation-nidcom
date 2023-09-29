@@ -10,6 +10,7 @@
 
 export const Routes = {
   home: "/",
+  signup: "/signup",
   login: "/login",
   forgotPassword: "/forgot-password",
   dashboard: "/dashboard",

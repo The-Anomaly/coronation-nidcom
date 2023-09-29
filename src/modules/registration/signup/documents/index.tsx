@@ -56,7 +56,7 @@ const DocumentForm: React.FC<DocumentFormProps> = ({ submit, previous }) => {
             <p className={watch("photo") !== null ? styles.uploaded : ""}>
               {watch("photo") !== null
                 ? watch("photo")[0].name
-                : "Click to upload. pdf, png or jpg (max. 2gig)"}{" "}
+                : "Click to upload. pdf, png or jpg (max. 2GB)"}{" "}
             </p>
             <span>{watch("photo") !== null ? "Replace" : "Browse"}</span>
           </label>
@@ -81,7 +81,7 @@ const DocumentForm: React.FC<DocumentFormProps> = ({ submit, previous }) => {
             <p className={watch("id") !== null ? styles.uploaded : ""}>
               {watch("id") !== null
                 ? watch("id")[0].name
-                : "Click to upload. pdf, png or jpg (max. 2gig)"}{" "}
+                : "Click to upload. pdf, png or jpg (max. 2GB)"}{" "}
             </p>
             <span>{watch("id") !== null ? "Replace" : "Browse"}</span>
           </label>
@@ -106,7 +106,7 @@ const DocumentForm: React.FC<DocumentFormProps> = ({ submit, previous }) => {
             <p className={watch("signature") !== null ? styles.uploaded : ""}>
               {watch("signature") !== null
                 ? watch("signature")[0].name
-                : "Click to upload. pdf, png or jpg (max. 2gig)"}{" "}
+                : "Click to upload. pdf, png or jpg (max. 2GB)"}{" "}
             </p>
             <span>{watch("signature") !== null ? "Replace" : "Browse"}</span>
           </label>
